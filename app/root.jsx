@@ -1,7 +1,17 @@
-import { Outlet, LiveReload, Link, Links } from "@remix-run/react";
+import { Outlet, LiveReload, Link, Links, Meta } from "@remix-run/react";
 import globalStylesUrl from "~/styles/global.css";
 
 export const links = () => [{ rel: "stylesheet", href: globalStylesUrl }];
+
+export const meta = () => {
+  const description = "A blog built with Remix";
+  const keywords = "remix, blog, react, javascript";
+
+  return {
+    description,
+    keywords,
+  };
+};
 
 export default function App() {
   return (
@@ -20,6 +30,8 @@ function Document({ children, title }) {
         <Links />
         <title>{title ? title : "Blog Remix"}</title>
         <meta charSet="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <Meta />
       </head>
       <body>
         {children}
